@@ -95,6 +95,21 @@
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.16</version>
+        </dependency>
+
         <!-- test dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -177,10 +192,10 @@
                     <plugin>
                         <groupId>com.spotify</groupId>
                         <artifactId>dockerfile-maven-plugin</artifactId>
-                        <version>1.3.7</version>
+                        <version>1.4.4</version>
                         <executions>
                             <execution>
-                                <phase>install</phase>
+                                <id>default</id>
                                 <goals>
                                     <goal>build</goal>
                                     <goal>push</goal>
@@ -228,6 +243,10 @@
             <id>portal-ci-nexus-releases</id>
             <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-releases/</url>
         </repository>
+        <repository>
+            <id>portal-ci-nexus-snapshots</id>
+            <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-snapshots/</url>
+        </repository>
     </repositories>
 
     <distributionManagement>
@@ -235,5 +254,9 @@
             <id>portal-ci-nexus-releases</id>
             <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>portal-ci-nexus-snapshots</id>
+            <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
