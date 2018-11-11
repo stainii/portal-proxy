@@ -2,6 +2,7 @@ package be.stijnhooft.portal.proxy.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,6 +21,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .cors().and()
             .csrf().disable()
             // make sure we use stateless session; session won't be used to store user's state.
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -31,8 +33,10 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
             .addFilterAfter(new JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter.class)
             // authorization requests config
             .authorizeRequests()
-            // allow all who are accessing "auth" service
+            // allow all who are accessing the auth service or front-end
             .antMatchers("/auth-service/**").permitAll()
+            .antMatchers("/front-end/**").permitAll()
+            .antMatchers(HttpMethod.OPTIONS).permitAll()
             // must be an admin if trying to access admin area (authentication is also required here)
             //.antMatchers("/gallery" + "/admin/**").hasRole("ADMIN")
             // Any other request must be authenticated
