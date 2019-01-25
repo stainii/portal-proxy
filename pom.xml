@@ -36,7 +36,7 @@
     </issueManagement>
     <ciManagement>
         <system>Jenkins</system>
-        <url>http://portal-ci.westeurope.cloudapp.azure.com/</url>
+        <url>https://server.stijnhooft.be/jenkins/</url>
     </ciManagement>
 
     <parent>
@@ -245,23 +245,23 @@
             </snapshots>
         </repository>
         <repository>
-            <id>portal-ci-nexus-releases</id>
-            <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-releases/</url>
+            <id>portal-nexus-releases</id>
+            <url>https://server.stijnhooft.be/nexus/repository/maven-releases/</url>
         </repository>
         <repository>
-            <id>portal-ci-nexus-snapshots</id>
-            <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-snapshots/</url>
+            <id>portal-nexus-snapshots</id>
+            <url>https://server.stijnhooft.be/nexus/repository/maven-snapshots/</url>
         </repository>
     </repositories>
 
     <distributionManagement>
         <repository>
-            <id>portal-ci-nexus-releases</id>
-            <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-releases/</url>
+            <id>portal-nexus-releases</id>
+            <url>https://server.stijnhooft.be/nexus/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>portal-ci-nexus-snapshots</id>
-            <url>http://portal-ci.westeurope.cloudapp.azure.com:8081/repository/maven-snapshots/</url>
+            <id>portal-nexus-snapshots</id>
+            <url>https://server.stijnhooft.be/nexus/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
