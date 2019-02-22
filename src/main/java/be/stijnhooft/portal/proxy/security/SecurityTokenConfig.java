@@ -33,9 +33,10 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
             .addFilterAfter(new JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter.class)
             // authorization requests config
             .authorizeRequests()
-            // allow all who are accessing the auth service or front-end
+            // allow all who are accessing the auth service, front-end and public APIs
             .antMatchers("/auth-service/**").permitAll()
             .antMatchers("/front-end/**").permitAll()
+            .antMatchers("/notifications/api/notification/*/action/url/").permitAll()
             .antMatchers(HttpMethod.OPTIONS).permitAll()
             // must be an admin if trying to access admin area (authentication is also required here)
             //.antMatchers("/gallery" + "/admin/**").hasRole("ADMIN")
