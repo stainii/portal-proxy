@@ -10,7 +10,6 @@
     <name>portal-proxy</name>
     <description>
         A REST proxy for the portal, to make it possible to have 1 base url for every service. Makes it easy to do load balancing.
-        Uses Spring Cloud Zuul.
     </description>
     <url>http://portal.stijnhooft.be</url>
     <licenses>
@@ -42,7 +41,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.2.1.RELEASE</version>
     </parent>
 
     <properties>
@@ -63,7 +62,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.M3</version>
+                <version>Hoxton.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
