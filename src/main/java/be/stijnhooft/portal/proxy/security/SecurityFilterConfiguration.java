@@ -55,6 +55,7 @@ public class SecurityFilterConfiguration {
             .pathMatchers("/notifications/api/notification/*/action/url/").permitAll()
             .pathMatchers("/todo/api/task/patch/**").permitAll()
             .pathMatchers("/image/api/retrieve/**").permitAll()
+            .pathMatchers("/actuator/**").permitAll()
             .pathMatchers(HttpMethod.OPTIONS).permitAll()
 
             // Any other request must be authenticated

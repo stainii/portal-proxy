@@ -1,43 +1,41 @@
 server:
-    port: 2000
+  port: 2000
 
 spring:
-    application:
-        name: "proxy"
-    profiles:
-        active: "@environment@"
-    jmx:
-        default-domain: "proxy"
+  application:
+    name: "proxy"
+  jmx:
+    default-domain: "proxy"
 
-    cloud:
-        gateway:
-            # auto-discover routes by querying the registered services in Eureka
-            discovery:
-                locator:
-                    enabled: true
-                    # Eureka passes its services names in all-caps. Make them lower-case.
-                    lower-case-service-id: true
-            globalcors:
-                cors-configurations:
-                    '[/**]':
-                        allowedOrigins: "*"
-                        allowedMethods:
-                            - GET
-                            - POST
-                            - UPDATE
-                            - DELETE
-                            - PATCH
-                            - OPTIONS
+  cloud:
+    gateway:
+      # auto-discover routes by querying the registered services in Eureka
+      discovery:
+        locator:
+          enabled: true
+          # Eureka passes its services names in all-caps. Make them lower-case.
+          lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - UPDATE
+              - DELETE
+              - PATCH
+              - OPTIONS
 
 
 eureka:
-    client:
-        service-url:
-            defaultZone: "http://localhost:8761/eureka"
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka"
 
-    # Preferring ip addresses, so other docker containers can contact me.
-    # Otherwise the published address to Eureka will be valid only inside my own container.
-    instance:
-        prefer-ip-address: true
+  # Preferring ip addresses, so other docker containers can contact me.
+  # Otherwise the published address to Eureka will be valid only inside my own container.
+  instance:
+    prefer-ip-address: true
 
-
+management.endpoints.web.exposure.include: health,info,prometheus
